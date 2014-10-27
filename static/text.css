@@ -1,0 +1,32 @@
+*{
+	font-size:20px;
+}
+.top_left{
+	margin:0px; 
+	width:300px; 
+	float:left;
+}
+.top_right{
+	width:150px;
+	float: right;
+}
+.container_me{
+	width:760px; 
+	height:760px;
+	border:1px solid red;
+	margin-left: 0px;
+}
+.top_me{
+	height:80px;
+	border:1px solid red;
+}
+.touxiang{
+	width:50px;
+	height: 50px;
+	float:right;
+	margin-right: 15px;
+}
+#table_me{
+	height:300px;
+	overflow:auto;
+}

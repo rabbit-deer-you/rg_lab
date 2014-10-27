@@ -1,0 +1,11 @@
+<?php
+	if($_GET['select']=='do'){
+		header("location:do.php?name=".$_GET['name']);
+	}
+	elseif($_GET['select']=='done'){
+		header("location:people.php?name=".$_GET['name']."&flag=0");
+	}
+	else{
+		header("error.php");
+	}
+?>

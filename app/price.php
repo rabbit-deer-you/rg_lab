@@ -16,7 +16,7 @@ include_once( 'weibo_api.php' );
 	<div class="container_me">
 		<div class="top_me">
 			<div class="top_left">
-				<h1>AA制管理系统</h1>
+				<h1>AA制系统</h1>
 			</div>
 			<div class="top_right">
 				<span>
@@ -32,7 +32,7 @@ echo $price/$_GET['people']; ?></strong>
 			元
 		</p>
 	</br>
-	<p>发送微博通知你的好友</p>
+	<p>发送微博@你的好友</p>
 </br>
 <form action="">
 	<textarea name="weibo" cols="20" rows="5" id="test2" style="overflow:visible"  >

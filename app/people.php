@@ -16,7 +16,7 @@ include_once( 'weibo_api.php' );
 	<div class="container_me">
 		<div class="top_me">
 			<div class="top_left">
-				<h1>AA制管理系统</h1>
+				<h1>AA制系统</h1>
 			</div>
 			<div class="top_right">
 				<span><?php echo $user_name; ?></span>

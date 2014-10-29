@@ -20,7 +20,7 @@ if ($token) {
 	$_SESSION['token'] = $token;
 	setcookie( 'weibojs_'.$o->client_id, http_build_query($token) );
 ?>
-授权完成,<a href="/app/index1.php">欢迎进入aa制管理系统</a><br />
+授权完成,<a href="/app/index1.php">欢迎进入aa制系统</a><br />
 <?php
 } else {
 ?>

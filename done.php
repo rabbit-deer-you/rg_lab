@@ -1,11 +1,3 @@
-<?php
-session_start();
-
-include_once( 'config.php' );
-include_once( 'saetv2.ex.class.php' );
-include_once( 'weibo_api.php' );
-
-?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -20,7 +12,7 @@ include_once( 'weibo_api.php' );
 				</div>
                 <div style="float:right;" >
 					<div style="float:left; margin-top:20px; height：50px">
-						<span><?php echo $user_name; ?></span>
+						<span>雪地0.0</span>
 					</div>
 					
 						<img style="width:50px height：50px； float:right; margin-bottom:10px;" class="touxiang" src="<?php echo $image_url; ?>">
@@ -28,7 +20,7 @@ include_once( 'weibo_api.php' );
 				</div>	
        		 </div>
 	<h2>活动名称：<strong><?php echo $_GET['name']?></strong></h1>
-	<form action="price_done.php">
+	<form action="jisuan.php">
 	<div id='table_me'>
 	<table class="table" >
 		<thead>
@@ -60,7 +52,6 @@ include_once( 'weibo_api.php' );
 	<input type="hidden" name="name" value="<?php echo $_GET['name']; ?>">
 	<input type="submit" value="提交" class="btn btn-default"  style="margin-left:10px;"></br>
 	</form>
-	<a href="index.php" style="float:right;"><button class="btn btn-primary">返回</button></a>
 	</div>
 </body>
 </html>

@@ -20,7 +20,7 @@
 				</div>	
        		 </div>
 	<h2>活动名称：<strong><?php echo $_GET['name']?></strong></h1>
-	<form action="price_do.php">
+	<form action="price.php">
 	<table  class="table" style="width:500px; margin:20px">
 		<thead>
 			<tr>
@@ -41,11 +41,11 @@
 			</tr>
 		</tbody>
 	</table>
+	<p style="padding:10px;">输入该活动的总人数</p>
+	<input type="text" name="people" style="margin:20px"></br></br></br></br>
 	<input type="hidden" style="margin:20px" name="name" value="<?php echo $_GET['name']; ?>">
-	<input type="hidden" style="margin:20px" name="people" value="<?php echo $_GET['people']; ?>">
 	<input type="submit" value="提交" class="btn btn-default"  style="margin:20px"></br>
 	</form>
-	<a href="index.php" style="float:right;"><button class="btn btn-primary">返回</button></a>
 	</div>
 </body>
 </html>

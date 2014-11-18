@@ -20,7 +20,7 @@
 				</div>	
        		 </div>
 	<h2>活动名称：<strong><?php echo $_GET['name']?></strong></h1>
-	<form action="price_done.php">
+	<form action="jisuan.php">
 	<div id='table_me'>
 	<table class="table" >
 		<thead>
@@ -52,7 +52,6 @@
 	<input type="hidden" name="name" value="<?php echo $_GET['name']; ?>">
 	<input type="submit" value="提交" class="btn btn-default"  style="margin-left:10px;"></br>
 	</form>
-	<a href="index.php" style="float:right;"><button class="btn btn-primary">返回</button></a>
 	</div>
 </body>
 </html>

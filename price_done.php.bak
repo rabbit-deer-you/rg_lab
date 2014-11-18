@@ -76,10 +76,7 @@
 			echo "<td>";
 			echo ($person_price[$i]-$averge);
 			echo "</td></tr>";
-			mysql_query("insert into result values (".$act_id[0].",'".$_GET[$a]."',".($person_price[$i]-$averge).");");
-			
 		}
-		mysql_close();
 	echo "
 		</tbody>
 	</table>";

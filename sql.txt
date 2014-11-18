@@ -1,0 +1,30 @@
+create database aazhi;
+create table user(
+user_id int(10) NOT NULL ,
+num int(10) NOT NULL auto_increment,
+primary key (num)
+);
+create table activities(
+num int(10) NOT NULL,
+act_name varchar(255) NOT NULL,
+act_id int (10) NOT NULL auto_increment,
+flag varchar(10) NOT NULL,
+people int(100) NOT NULL,
+type varchar(100) NOT NULL,
+primary key(act_id)
+);
+create table data(
+act_id int(10) NOT NULL,
+name varchar(255) NOT NULL,
+chifan varchar(255) NOT NULL,
+zhusu varchar(255) NOT NULL,
+jiaotong varchar(255) NOT NULL,
+menpiao varchar(255) NOT NULL,
+qita varchar(255) NOT NULL,
+total int(100) NOT NULL
+);
+create table result(
+act_id int(10) NOT NULL,
+name varchar(255) NOT NULL,
+price int(100) NOT NULL
+);

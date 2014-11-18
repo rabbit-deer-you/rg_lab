@@ -84,48 +84,6 @@
 		</tbody>
 	</table>
 		</div>
-		<?php 
-	if ($_GET['flag'] == '1'){ 
-		echo "
-	<p>实际花费的总数为：</p>
-	<form action=\"activities_new.php\">
-	<input type=\"text\" name=\"total\" style=\"width:50px;\" onFocus=\"if (this.value==this.defaultValue) this.value='';\" onBlur=\"if (this.value=='') this.value=this.defaultValue;\" value=\"0\">
-	<input type=\"hidden\" style=\"margin:20px\" name=\"name\" value=\"".$_GET['name']."\"></br>
-	<input type=\"submit\" valtttttue=\"提交\" class=\"btn btn-default\"  style=\"margin:20px\">
-	</form>
-		";
-	}else if($_GET['flag'] == '0' && $type[0] =='done'){
-			echo "
-			<table  class=\"table\" style=\"width:500px; margin:20px\">
-				<thead>
-					<tr>
-						<th>姓名</th>
-						<th>结果</th>
-					</tr>
-				</thead>
-				<tbody>";
-					while($row = mysql_fetch_array($result2))
- 	 				{
-
- 	 					echo "<tr>";
- 	 					echo "<td>".$row['name']."</td>";
- 	 					echo "<td>".$row['price']."</td>";
- 	 					echo "</tr>";
-  					}
-  					echo "
-				</tbody>
-			</table>";	
-
-	}else if($_GET['flag'] == '0'&& $type[0] =='do'){
-		if(($total[0]-$price[0])<0){
-		echo "<p>每个人应多付".($price[0]-$total[0])."元</p>";
-		}
-		else{
-			echo "<p>每个人找还".($total[0]-$price[0])."元</p>";
-		}	
-	}
-	else{}
-	?>
 		<a href="index.php" style="float:right;"><button class="btn btn-primary">返回</button></a>
 	</div>
 </body>

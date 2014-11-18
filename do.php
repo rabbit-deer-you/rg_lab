@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+include_once( 'config.php' );
+include_once( 'saetv2.ex.class.php' );
+include_once( 'weibo_api.php' );
+
+?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +20,7 @@
 				</div>
                 <div style="float:right;" >
 					<div style="float:left; margin-top:20px; height：50px">
-						<span>雪地0.0</span>
+						<span><?php echo $user_name; ?></span>
 					</div>
 					
 						<img style="width:50px height：50px； float:right; margin-bottom:10px;" class="touxiang" src="<?php echo $image_url; ?>">

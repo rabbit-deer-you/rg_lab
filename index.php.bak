@@ -34,7 +34,7 @@
 		mysql_query("insert into user(user_id) value (".$uid.");");
 	}
 	else{
-		$result=mysql_query("select * from activities where num=".$user_id[0].";");
+		$result=mysql_query("select act_name from activities where num=".$user_id[0].";");
 	}
 	mysql_close($con);
 ?>
@@ -66,21 +66,11 @@
        		 </div>
 		<h2>活动列表</h2>
 		<?php 
-			if(!empty($user_id[0]))
-			{
 			while($row = mysql_fetch_array($result))
  	 		{
- 	 			echo "<div><a href=\"activity.php?name=".$row['act_name']."&flag=".$row['flag']."\"".">";
- 	 			echo $row['act_name']."</a> &nbsp &nbsp &nbsp";
- 	 			if($row['flag'] == '0')
- 	 			{
- 	 				echo "<div  style='float:right; margin:10px 400px 10px 10px;' id='butt' class='btn btn-success'>已完成</div></div></br>";
- 	 			}
- 	 			else{
- 	 				echo "<div id='butt' style='float:right; margin:10px 400px 10px 10px;' class='btn btn-primary'>未完成</div></div></br>";
- 	 			}
+ 	 			echo "<a href=\"activity.php?name=".$row['act_name']."\"".">";
+ 	 			echo "<p>".$row['act_name']."</p></a>";
   			}
-  		}
   		?>
 		<a href="new.php">新建一个活动</a>
 	</div>

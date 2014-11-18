@@ -48,7 +48,7 @@ mysql_query("insert into result values (".$act_id[0].",'',".($price/$_GET['peopl
 </br>
 <form action="">
 	<textarea name="weibo" cols="20" rows="5" id="test2" style="overflow:visible"  >
-		<?php echo trim($_GET['name'])." 活动，总参加人数为".$_GET['people']."人，每个人预付费用为 
+		<?php echo trim($_GET['name'])." 活动，总参加人数为".$_GET['people']."人，每个人分担的费用为 
 ".$price/$_GET['people']."元,@"; ?></textarea>
 	<input type="submit">
 	<?php

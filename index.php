@@ -1,3 +1,10 @@
+<?php
+	$con=mysql_connect("localhost","root","meng");
+	mysql_select_db("aazhi", $con);
+	$sql=mysql_query("select num from user where user_id=11;");
+	$user_id=mysql_fetch_array($sql);
+	$result=mysql_query("select * from activities where num=".$user_id[0].";");
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -11,30 +18,36 @@
 
 <body>
 	<div class="container_me">
-  			<div class="navbar_me">
-                <div style="float:left;">
-					<h1>AA制管理系统</h1>
-				</div>
-                <div style="float:right;" >
-					<div style="float:left; margin-top:20px; height：50px">
-						<span>雪地0.0</span>
-					</div>
-					
-						<img style="width:50px height：50px； float:right; margin-bottom:10px;" class="touxiang" src="<?php echo $image_url; ?>">
-													
-				</div>	
-       		 </div>
-		<h2 class="text-center">创建一个新活动</h2>
-		<div style="margin:10px; padding:10px;" class="text-center">
-			<form action="select.php">
-				<span>请选择活动的类型:</span></br>
-				<input type="radio" name="select" value="do">策划中的活动
-				<input type="radio" name="select" value="done">已经完成的活动</br></br></br></br>
-				<span>请输入活动的名字</span>
-				<input type="text" class="form-control" style="width:200px; margin:20px 20px 20px 250px;" name="name">
-				<input type="submit" class="btn btn-success btn-lg" value="提交">
-			</form>
-		</div>
+  		<div class="navbar_me">
+        	<div style="float:left; margin-left:10px;">
+				<h1>AA制管理系统</h1>
+			</div>
+            <div style="float:right;" >
+				<div style="float:left; margin-top:20px; height：50px">
+					<span>雪地0.0</span>
+				</div>		
+				<img style="width:50px height：50px； float:right; margin-bottom:10px;" class="touxiang" src="<?php echo $image_url; ?>">									
+			</div>	
+   		 </div>
+		<h2>活动列表</h2>
+		<div class="index">
+		<?php 
+			while($row = mysql_fetch_array($result))
+ 	 		{
+ 	 			echo "<div style='margin:10px;'><a href=\"activity.php?name=".$row['act_name']."&flag=".$row['flag']."\"".">";
+ 	 			echo $row['act_name']."</a> &nbsp &nbsp &nbsp";
+ 	 			if($row['flag'] == '0')
+ 	 			{
+ 	 				echo "<div  style='float:right; margin-right:200px;' id='butt' class='btn btn-success'>已完成</div></div></br>";
+ 	 			}
+ 	 			else{
+ 	 				echo "<div id='butt' style='float:right; margin-right:200px;' class='btn btn-primary'>未完成</div></div></br>";
+ 	 			}
+  			}
+  		?>
+  		</div>
+  	</br>
+	<a href="new.php" style='margin:10px; color:red;'>+新建一个活动</a>
 	</div>
 </body>
 </html>

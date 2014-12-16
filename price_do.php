@@ -33,41 +33,27 @@ session_start();
 													
 				</div>	
        		 </div>
-		<?php $price=$_GET['chifan']+$_GET['jiaotong']+$_GET['zhusu']+ $_GET['menpiao']+$_GET['qita']; ?>
-		<p style="font-size:30px; ">
-			每个人预先付的费用为 <strong><span style="color:red;">
+		<h2><?php echo $_GET['name']; ?> 活动的结果：</h2>
+		<p style="font-size:30px; text-align:center;">
+			        每个人预先付的费用为 <strong><span style="color:red;">
 					<?php 
-echo $price/$_GET['people'];
-mysql_query("insert into result values (".$act_id[0].",'',".($price/$_GET['people']).");");
-?></strong>
+echo number_format(($price/$_GET['people']), 2, '.', ''); 
+mysql_query("insert into result values (".$act_id[0].",'',".$price.");");?></strong>
 			</span>
 			元
 		</p>
 	</br>
-	<p>发送微博通知你的好友</p>
+	<p style="margin:20px;">发送微博通知你的好友:</p>
 </br>
-<form action="">
-	<textarea name="weibo" cols="20" rows="5" id="test2" style="overflow:visible"  >
-		<?php echo trim($_GET['name'])." 活动，总参加人数为".$_GET['people']."人，每个人预付费用为 
-".$price/$_GET['people']."元,@"; ?></textarea>
-	<input type="submit">
-	<?php
-if( isset($_REQUEST['weibo']) ) {
-	$ret = $c->
-	update( $_REQUEST['weibo'] );	//发送微博
-	if ( isset($ret['error_code']) && $ret['error_code'] > 0 ) {
-		echo "
-	<p>发送失败，错误：{$ret['error_code']}:{$ret['error']}</p>
-	";
-	} else {
-		echo "
-	<p>发送成功</p>
-	";
-	}
-}
-?>
+<form action="send.php">
+	<textarea name="weibo" cols="20" rows="5" id="test2" style="overflow:visible text-algin:center; margin-left:270px;"  ><?php echo trim($_GET['name'])." 活动，总参加人数为".$_GET['people']."人，每个人预费用为 
+".number_format(($price/$_GET['people']), 2, '.', '')."元,@"; ?></textarea>
+	<div>
+		</br></br></br>
+		<a href="index.php" style="float:right; margin-right:300px;"><div class="btn btn-primary">返回</div></a>
+		<input type="submit" value="提交" class="btn btn-success"  style="margin-right:50px; float:right;"></br>
+	</div>
 </form>
-<a href="index.php" style="float:right;"><button class="btn btn-primary">返回</button></a>
 </div>
 </body>
 </html>

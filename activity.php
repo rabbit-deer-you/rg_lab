@@ -6,6 +6,7 @@
 	include_once( 'weibo_api.php' );
 	$con=mysql_connect("w.rdc.sae.sina.com.cn:3307/app_aazhi","31kowyzwmj","lhzi4xy5zyzzjx142552wx4jwkk1jzjyzyzx434k");	
 	mysql_select_db("app_aazhi", $con);
+
 	$sql=mysql_query("select act_id from activities where act_name='".$_GET['name']."';");
 	$act_id=mysql_fetch_array($sql);
 
@@ -54,8 +55,12 @@
 													
 				</div>	
        		 </div>
+		<div style="margin:10px;">
 		<h2>活动名称：<strong><?php echo $_GET['name']?></strong></h2>
-		<div id="table_me">
+		<div style="display:block; margin-bottom:10px; float:right;">
+			<a href=<?php echo "\"delete.php?act_id=".$act_id[0]."\""?> style="float:right; margin-right:10px;"><button class="btn btn-danger">删除</button></a>
+		</div>
+		<div id="table_small">
 		<table  class="table" style="width:500px; margin:20px">
 		<thead>
 			<tr>
@@ -87,16 +92,18 @@
 		<?php 
 	if ($_GET['flag'] == '1'){ 
 		echo "
-	<p>实际花费的总数为：</p>
+	<p style='margin:20px;''>实际花费的总数为：</p>
 	<form action=\"activities_new.php\">
-	<input type=\"text\" name=\"total\" style=\"width:50px;\" onFocus=\"if (this.value==this.defaultValue) this.value='';\" onBlur=\"if (this.value=='') this.value=this.defaultValue;\" value=\"0\">
-	<input type=\"hidden\" style=\"margin:20px\" name=\"name\" value=\"".$_GET['name']."\"></br>
-	<input type=\"submit\" valtttttue=\"提交\" class=\"btn btn-default\"  style=\"margin:20px\">
+	&nbsp &nbsp &nbsp<input type=\"text\" name=\"total\" style=\"width:50px;\" onFocus=\"if (this.value==this.defaultValue) this.value='';\" onBlur=\"if (this.value=='') this.value=this.defaultValue;\" value=\"0\">
+	&nbsp &nbsp &nbsp<input type=\"hidden\" style=\"margin:20px\" name=\"name\" value=\"".$_GET['name']."\"></br></br></br>
+	<a href=\"index.php\" style=\"float:right; margin-right:300px;\"><div class=\"btn btn-primary\">返回</div></a>
+	<input type=\"submit\" valtttttue=\"提交\" class=\"btn btn-default\"  style=\"margin-right:50px; float:right\">
 	</form>
 		";
 	}else if($_GET['flag'] == '0' && $type[0] =='done'){
 			echo "
-			<table  class=\"table\" style=\"width:500px; margin:20px\">
+			<div id=\"table_small\">
+			<table  class=\"table\"  style=\"width:500px; margin:20px\">
 				<thead>
 					<tr>
 						<th>姓名</th>
@@ -114,19 +121,27 @@
   					}
   					echo "
 				</tbody>
-			</table>";	
+			</table></div>";	
+				echo "<a href=\"index.php\" style=\"float:right; margin-right:300px;\"><button class=\"btn btn-primary\">返回</button></a>
+	<div class='btn btn-primary' style=\"margin-right:50px; float:right;\" onclick=\"disp_alert()\">支付</div></br>";
 
 	}else if($_GET['flag'] == '0'&& $type[0] =='do'){
-		if(($total[0]-$price[0])<0){
-		echo "<p>每个人应多付".($price[0]-$total[0])."元</p>";
+		if($total[0]-$price[0]>0){
+			echo "<p style='margin:20px;'>实际花费了<strong style='color:red;'>".$total[0]."</strong>元，每个人应多付<strong style='color:red;'>".number_format((($total[0]-$price[0])/$people[0]), 2, '.', ' ')."</strong>元</p>";
 		}
 		else{
-			echo "<p>每个人找还".($total[0]-$price[0])."元</p>";
-		}	
+			echo "<p style='margin:20px;'>实际花费了<strong style='color:red;'>".$total[0]."</strong>元，每个人找还<strong style='color:red;'>".number_format((($price[0]-$total[0])/$people[0]), 2, '.', ' ')."</strong>元</p>";
+		}
+		echo "<a href=\"index.php\" style=\"float:right; margin-right:100px;\"><div class=\"btn btn-primary\">返回</div></a>";
 	}
 	else{}
 	?>
-		<a href="index.php" style="float:right;"><button class="btn btn-primary">返回</button></a>
 	</div>
 </body>
 </html>
+<script type="text/javascript">
+function disp_alert()
+{
+alert("支付成功");
+}
+</script>

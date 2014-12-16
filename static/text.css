@@ -2,9 +2,8 @@
 	font-size:20px;
 }
 body{
-    background-image:url(032.jpg);
+   /* background-image:url(032.jpg);*/
 }
-.top
 .top_left{
 	margin:0px; 
 	width:300px; 
@@ -28,17 +27,41 @@ body{
 	width:50px;
 	height: 50px;
 	float:right;
-	margin-right: 15px;
+	margin: 10px;
 }
 #table_me{
-	height:300px;
+	height:250px;
+	overflow:auto;
+}
+#table_small{
+	height:200px;
 	overflow:auto;
 }
 .navbar_me{
-    border-radius:4px;
-  
+    border-radius:4px; 
 	border-color: #e7e7e7;
+	background-color: #f8f8f8;
     border-radius: 4px;
     height:80px;
-    border: 1px solid gray;
+    border: 1px solid transparent;
+}
+#butt{
+	cursor: auto;
+}
+h2{
+	margin:10px;
+	width: 400px;
+	display: inline;
+}
+.index{
+	height: 400px;
+	overflow: auto;
+	margin-left:150px; 
+}
+#set_center{
+	vertical-align:middle;
+	display: inline;
+}
+input{
+	vertical-align:middle;
 }

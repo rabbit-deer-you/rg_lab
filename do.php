@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+include_once( 'config.php' );
+include_once( 'saetv2.ex.class.php' );
+include_once( 'weibo_api.php' );
+
+?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +20,7 @@
 				</div>
                 <div style="float:right;" >
 					<div style="float:left; margin-top:20px; height：50px">
-						<span>雪地0.0</span>
+						<span><?php echo $user_name; ?></span>
 					</div>
 					
 						<img style="width:50px height：50px； float:right; margin-bottom:10px;" class="touxiang" src="<?php echo $image_url; ?>">
@@ -20,7 +28,7 @@
 				</div>	
        		 </div>
 	<h2>活动名称：<strong><?php echo $_GET['name']?></strong></h1>
-	<form action="price.php">
+	<form action="price_do.php">
 	<table  class="table" style="width:500px; margin:20px">
 		<thead>
 			<tr>
@@ -41,10 +49,10 @@
 			</tr>
 		</tbody>
 	</table>
-	<p style="padding:10px;">输入该活动的总人数</p>
-	<input type="text" name="people" style="margin:20px"></br></br></br></br>
 	<input type="hidden" style="margin:20px" name="name" value="<?php echo $_GET['name']; ?>">
-	<input type="submit" value="提交" class="btn btn-default"  style="margin:20px"></br>
+	<input type="hidden" style="margin:20px" name="people" value="<?php echo $_GET['people']; ?>"></br></br></br>
+	<a href="index.php" style="float:right; margin-right:300px;"><div class="btn btn-primary">返回</div></a>
+	<input type="submit" value="提交" class="btn btn-success"  style="margin-right:50px; float:right;"></br>
 	</form>
 	</div>
 </body>

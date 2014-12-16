@@ -14,9 +14,13 @@
 
 	$sql=mysql_query("select flag from activities where act_name='".$_GET['name']."';");
 	$flag=mysql_fetch_array($sql);
+
+	$sql=mysql_query("select price from result where act_id=".$act_id[0].";");
+	$price=mysql_fetch_array($sql);
+	
 	$result=mysql_query("select * from data where act_id=".$act_id[0].";");
 	mysql_query("update activities set flag='0' where act_name='".$_GET['name']."';");
-	mysql_query("update data set total=".$_GET['total']."where act_id=".$act_id[0].";");
+	mysql_query("update data set total=".$_GET['total']." where act_id=".$act_id[0].";");
 	$total=0;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -76,16 +80,24 @@
 		</tbody>
 	</table>
 	</div>
-	<p>实际花费的总数为：<?php echo $_GET['total'];?></p>
 	<?php 
 	if(($total-$_GET['total'])<0){
-		echo "<p>每个人应多付".(($_GET['total']-$total)/$people[0])."元</p>";
-		}
+		echo "<p style=\"margin:20px;\">实际花费为<strong style=\"color:red;\">".$_GET['total']."</strong>元,预算为<strong  style='color:red;'>".$price[0]."</strong>元，每个人应多付"."<strong style=\"color:red;\">".number_format((($_GET['total']-$total)/$people[0]), 2, '.', '')."元</strong>,发送微博通知你的好友:</p>";
+		echo "<form action=\"send.php\">
+	<textarea name=\"weibo\" cols=\"20\" rows=\"5\" id=\"test2\" style=\"margin-left:20px; margin-top:10px;\"  >".$_GET['name']."活动,实际花费的总数为:".$_GET['total']."元，预算为".$price[0]."元,每个人应多付".number_format((($_GET['total']-$total)/$people[0]), 2, '.', '')."元,@</textarea>
+		<a href=\"index.php\" style=\"float:right; margin-right:200px;\"><div class=\"btn btn-primary\" style=\"margin-top:100px;\">返回</div></a>
+		<input type=\"submit\" value=\"提交\" class=\"btn btn-success\"  style=\"margin-right:50px; float:right;  margin-top:100px;\"></br>
+</form>";
+}	
 		else{
-			echo "<p>每个人找还".(($total-$_GET['total'])/$people[0])."元</p>";
+			echo "<p style=\"margin:20px;\">实际花费的总数为<strong style=\"color:red;\">".$_GET['total']."</strong>元,预算为<strong style='color:red;'>".$price[0]."</strong>元，每个人找还"."<strong style=\"color:red;\">".number_format((($total-$_GET['total'])/$people[0]), 2, '.', '')."元</strong>,发送微博通知你的好友:</p>";
+			echo "<form action=\"send.php\">
+	<textarea name=\"weibo\" cols=\"20\" rows=\"5\" id=\"test2\" style=\"margin-left:20px; margin-top:10px;\"  >".$_GET['name']."活动,实际花费的总数为:".$_GET['total']."元,预算为".$price[0]."元，每个人应找还".number_format((($total-$_GET['total'])/$people[0]), 2, '.', '')."元,@</textarea>
+		<a href=\"index.php\" style=\"float:right; margin-right:200px;\"><div class=\"btn btn-primary\" style=\"margin-top:100px;\">返回</div></a>
+		<input type=\"submit\" value=\"提交\" class=\"btn btn-success\"  style=\"margin-right:50px; float:right;  margin-top:100px;\"></br>
+</form>";
 		}
 		 ?>
-		<a href="index.php" style="float:right;"><button class="btn btn-primary">返回</button></a>
 	</div>
 </body>
 </html>
